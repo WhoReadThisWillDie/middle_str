@@ -8,7 +8,6 @@ using namespace std;
 
 long long itc_len(string str);
 int itc_pow(int num1, int num2);
-string to_bin_str(string str);
 bool itc_isDigit(unsigned char c);
 unsigned char itc_toUpper(unsigned char c);
 unsigned char itc_changeCase(unsigned char c);
