@@ -22,3 +22,25 @@ int itc_pow(int num1, int num2)
     else if (num2 == 0)
         return 1;
 }
+
+int itc_find_str(string str1, string str2)
+{
+    int num = 0;
+    int count_num = 0;
+    int res_num = 0;
+    for (int i = 0; i < itc_len(str1); i++) {
+        if (str1[i] == str2[num]) {
+            if (num == 0)
+                res_num = i;
+            num++;
+            count_num++;
+            if (count_num == itc_len(str2))
+                return res_num;
+        }
+        else {
+            num = 0;
+            count_num = 0;
+        }
+    }
+    return -1;
+}

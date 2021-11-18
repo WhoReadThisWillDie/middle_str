@@ -2,10 +2,12 @@
 
 string itc_maxCharWord(string str)
 {
-	int i = 0, k = 0;
+	int i = 0;
 	int word_count = 0;
+	string word;
 	string res;
 	string str1 = "";
+	bool is_word = true;
 	str += ' ';
 	while (str[i] != '\0') {
 		if (str[i] == ' ')
@@ -16,14 +18,25 @@ string itc_maxCharWord(string str)
 	if (word_count < 2)
 		return "error";
 	while (str[i] != '\0') {
-		if ((str[i] >= 65 && str[i] <= 90) || (str[i] >= 97 && str[i] <= 122))
+		if ((str[i] >= 65 && str[i] <= 90) || (str[i] >= 97 && str[i] <= 122) && is_word == true) {
 			str1 += str[i];
-		else
+		}
+        else if (str[i] == ' ') {
+			if (is_word == true)
+				word = str1;
+			else
+				is_word = true;
+		}
+		else {
 			str1 = "";
-		if (itc_len(str1) > itc_len(res))
-			res = str1;
+			is_word = false;
+		}
+		if (itc_len(word) > itc_len(res))
+			res = word;
 		i++;
 	}
+	if (res == "")
+		return "error";
 	return res;
 }
 
@@ -43,29 +56,14 @@ char itc_sameChar(string str)
 		}
 		count1++;
 	}
-	return 'a';
+	return ' ';
 }
 
 bool itc_isFirstInSecond(string s1, string s2)
 {
-	int num = 0;
-	int count_num = 0;
-	int res_num = 0;
-	for (int i = 0; i < itc_len(s2); i++) {
-		if (s1[num] == s2[i]) {
-			if (num == 0)
-				res_num = i;
-			num++;
-			count_num++;
-			if (count_num == itc_len(s1))
-				return 1;
-		}
-		else {
-			num = 0;
-			count_num = 0;
-		}
-	}
-	return 0;
+	if (itc_find_str(s2, s1) == -1)
+		return 0;
+	return 1;
 }
 
 string itc_Cezar(string str, int k)
@@ -73,19 +71,20 @@ string itc_Cezar(string str, int k)
 	int i = 0;
 	int symb_code = 0;
 	string res_str = "";
-	while (str[i] != '\0') {
-		if ((str[i] >= 65 && str[i] <= 90) || (str[i] >= 97 && str[i] <= 122)) {
-			symb_code = 97;
-			if (str[i] >= 65 && str[i] <= 90)
-				symb_code = 65;
-			if (str[i] - symb_code + k >= 0)
-				res_str += symb_code + (str[i] - symb_code + k) % 25;
-			else
-				res_str += symb_code + 25 - (25 + str[i] - symb_code) % 25;
+	string ch = "";
+	string lower = "abcdefghijklmnopqrstuvwxyz";
+	string upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	for (int i = 0; i < itc_len(str); i++) {
+		if (str[i] >= 65 && str[i] <= 90) {
+			ch = str[i];
+			res_str += upper[(itc_find_str(upper, ch) + (k % 26) - 25) % 26 + 25];
+		}
+		else if (str[i] >= 97 && str[i] <= 122) {
+			ch = str[i];
+			res_str += lower[(itc_find_str(lower, ch) + (k % 26) - 25) % 26 + 25];
 		}
 		else
 			res_str += str[i];
-		i++;
 	}
 	return res_str;
 }
@@ -94,12 +93,18 @@ string itc_rmFreeSpace(string str)
 {
 	int i = 0;
 	string res_str = "";
+	string res_str2 = "";
 	while(str[i] != '\0') {
-		if (str[i] == ' ' and str[i - 1] != ' ')
+		if (str[i] == ' ' and i <= 1)
+			res_str = res_str;
+		else if (str[i] == ' ' and str[i - 1] != ' ')
 			res_str += str[i];
 		else if (str[i] != ' ')
 			res_str += str[i];
 		i++;
 	}
-	return res_str;
+	for (int k = 0; k < itc_len(res_str) - 1; k++) {
+		res_str2 += res_str[k];
+	}
+	return res_str2;
 }
