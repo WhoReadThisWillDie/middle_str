@@ -2,6 +2,8 @@
 
 bool itc_isIp(string str)
 {
+	if (str == "")
+		return 0;
 	str += '.';
 	int num = 0;
 	int check_count = 0;

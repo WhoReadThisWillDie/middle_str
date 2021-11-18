@@ -63,6 +63,8 @@ char itc_sameChar(string str)
 
 bool itc_isFirstInSecond(string s1, string s2)
 {
+	if (s1 == "" || s2 == "")
+		return 0;
 	if (itc_find_str(s2, s1) == -1)
 		return 0;
 	return 1;
@@ -70,6 +72,8 @@ bool itc_isFirstInSecond(string s1, string s2)
 
 string itc_Cezar(string str, int k)
 {
+	if (str == "")
+		return "";
 	int i = 0;
 	int symb_code = 0;
 	string res_str = "";
@@ -93,6 +97,8 @@ string itc_Cezar(string str, int k)
 
 string itc_rmFreeSpace(string str)
 {
+	if (str == "")
+		return "";
 	int i = 0;
 	string res_str = "";
 	string res_str2 = "";
