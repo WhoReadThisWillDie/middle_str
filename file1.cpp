@@ -26,6 +26,8 @@ unsigned char itc_changeCase(unsigned char c)
 
 bool itc_compare(string s1, string s2)
 {
+    if (s1 == "" || s2 == "")
+        return 0;
     int num = 0;
     while (s1[num] != '\0' || s2[num] != '\0') {
         if (s1[num] != s2[num])
@@ -37,6 +39,8 @@ bool itc_compare(string s1, string s2)
 
 int itc_countWords(string str)
 {
+    if (str == "")
+        return 0;
     int word_count = 0;
     int symb_count = 0;
     bool is_word = true;

@@ -2,8 +2,7 @@
 
 string itc_maxCharWord(string str)
 {
-	int i = 0;
-	int k = 0;
+	int i = 0, k = 0;
 	int word_count = 0;
 	string res;
 	string str1 = "";
@@ -44,6 +43,7 @@ char itc_sameChar(string str)
 		}
 		count1++;
 	}
+	return 'a';
 }
 
 bool itc_isFirstInSecond(string s1, string s2)
