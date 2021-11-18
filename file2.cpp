@@ -111,8 +111,11 @@ string itc_rmFreeSpace(string str)
 			res_str += str[i];
 		i++;
 	}
-	for (int k = 0; k < itc_len(res_str) - 1; k++) {
-		res_str2 += res_str[k];
-	}
+	if (res_str[itc_len(res_str) - 1] == ' ')
+		for (int k = 0; k < itc_len(res_str) - 1; k++) {
+			res_str2 += res_str[k];
+		}
+	else
+		return res_str;
 	return res_str2;
 }
