@@ -23,3 +23,13 @@ bool itc_isIp(string str)
 		return 1;
 	return 0;
 }
+
+string itc_DecToBin(string str)
+ {
+     return "smth";
+ }
+
+string itc_decToBase(int num, int base)
+{
+    return "smth";
+}

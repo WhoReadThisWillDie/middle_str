@@ -27,7 +27,7 @@ unsigned char itc_changeCase(unsigned char c)
 bool itc_compare(string s1, string s2)
 {
     if (s1 == "" || s2 == "")
-        return 0;
+        return false;
     int num = 0;
     while (s1[num] != '\0' || s2[num] != '\0') {
         if (s1[num] != s2[num])
