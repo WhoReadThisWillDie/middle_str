@@ -22,8 +22,10 @@ string itc_maxCharWord(string str)
 			str1 += str[i];
 		}
         else if (str[i] == ' ') {
-			if (is_word == true)
+			if (is_word == true) {
 				word = str1;
+				str1 = "";
+			}
 			else
 				is_word = true;
 		}
