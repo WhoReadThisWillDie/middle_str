@@ -21,6 +21,7 @@ int itc_pow(int num1, int num2)
     }
     else if (num2 == 0)
         return 1;
+    return 0;
 }
 
 int itc_find_str(string str1, string str2)

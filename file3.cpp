@@ -8,18 +8,22 @@ bool itc_isIp(string str)
 	int num = 0;
 	int check_count = 0;
 	string str1 = "";
-	for (int i = 0; i < itc_len(str); i++) {
+	for (int i = 0; str[i] != '\0'; i++) {
 		if (str[i] >= '0' && str[i] <= '9')
 			str1 += str[i];
-		if (str[i] == '.') {
-			for (int k = itc_len(str1) - 1; k >= 0; k--) {
-				num += itc_pow(10, 2 - k) * (str1[k] - 48);
+		else if (str[i] == '.') {
+			for (int k = 0; k < itc_len(str1); k++) {
+				num += str1[k] - '0';
+				if (k < itc_len(str1) - 1)
+					num *= 10;
 			}
 			if (num >= 0 && num <= 255)
 				check_count++;
 			str1 = "";
 			num = 0;
 		}
+		else
+			return 0;
 	}
 	if (check_count == 4)
 		return 1;

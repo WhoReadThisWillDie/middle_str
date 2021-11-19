@@ -63,8 +63,8 @@ char itc_sameChar(string str)
 
 bool itc_isFirstInSecond(string s1, string s2)
 {
-	if (s1 == "" || s2 == "")
-		return 0;
+	if (s1 == "" && s2 == "")
+		return 1;
 	if (itc_find_str(s2, s1) == -1)
 		return 0;
 	return 1;
@@ -74,8 +74,6 @@ string itc_Cezar(string str, int k)
 {
 	if (str == "")
 		return "";
-	int i = 0;
-	int symb_code = 0;
 	string res_str = "";
 	string ch = "";
 	string lower = "abcdefghijklmnopqrstuvwxyz";
@@ -99,20 +97,18 @@ string itc_rmFreeSpace(string str)
 {
 	if (str == "")
 		return "";
-	int i = 0;
 	string res_str = "";
 	string res_str2 = "";
-	while(str[i] != '\0') {
-		if (str[i] == ' ' and i <= 1)
+	for (int i = 0; str[i] != '\0'; i++) {
+		if (str[i] == ' ' and i < 1)
 			res_str = res_str;
-		else if (str[i] == ' ' and str[i - 1] != ' ')
+	else if (str[i] == ' ' and str[i - 1] == ' ')
 			res_str += str[i];
 		else if (str[i] != ' ')
 			res_str += str[i];
-		i++;
 	}
 	if (res_str[itc_len(res_str) - 1] == ' ')
-		for (int k = 0; k < itc_len(res_str) - 1; k++) {
+		for (int k = 0; res_str[k] != '\0'; k++) {
 			res_str2 += res_str[k];
 		}
 	else
