@@ -93,27 +93,6 @@ string itc_Cezar(string str, int k)
 	return res_str;
 }
 
-string itc_Cezar1(string str, int k)
-{
-	if (str == "")
-		return "";
-	k = (k + 26) % 26;
-	for (int i = 0; str[i] != '\0'; i++)
-	{
-		if (str[i] >= 'a' && str[i] <= 'z')
-		{
-		str[i] = str[i] - 'a' + k;
-		str[i] = str[i] % 26 + 'a';
-	}
-	else if (str[i] >= 'A' && str[i] <= 'Z')
-	{
-		str[i] = str[i] - 'A' + k;
-		str[i] = str[i] % 26 + 'A';
-		}
-	}
-	return str;
-}
-
 string itc_rmFreeSpace(string str)
 {
 	if (str == "")
