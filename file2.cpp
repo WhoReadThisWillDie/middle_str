@@ -78,23 +78,40 @@ string itc_Cezar(string str, int k)
 {
 	if (str == "")
 		return "";
+	k = (k + 26) % 26;
 	string res_str = "";
-	string ch = "";
-	string lower = "abcdefghijklmnopqrstuvwxyz";
-	string upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	for (int i = 0; i < itc_len(str); i++) {
 		if (str[i] >= 65 && str[i] <= 90) {
-			ch = str[i];
-			res_str += upper[(itc_find_str(upper, ch) + (k % 26) - 25) % 26 + 25];
+			res_str += (str[i] - 65 + k) % 26 + 65;
 		}
 		else if (str[i] >= 97 && str[i] <= 122) {
-			ch = str[i];
-			res_str += lower[(itc_find_str(lower, ch) + (k % 26) - 25) % 26 + 25];
+			res_str += (str[i] - 97 + k) % 26 + 97;
 		}
 		else
 			res_str += str[i];
 	}
 	return res_str;
+}
+
+string itc_Cezar1(string str, int k)
+{
+	if (str == "")
+		return "";
+	k = (k + 26) % 26;
+	for (int i = 0; str[i] != '\0'; i++)
+	{
+		if (str[i] >= 'a' && str[i] <= 'z')
+		{
+		str[i] = str[i] - 'a' + k;
+		str[i] = str[i] % 26 + 'a';
+	}
+	else if (str[i] >= 'A' && str[i] <= 'Z')
+	{
+		str[i] = str[i] - 'A' + k;
+		str[i] = str[i] % 26 + 'A';
+		}
+	}
+	return str;
 }
 
 string itc_rmFreeSpace(string str)
